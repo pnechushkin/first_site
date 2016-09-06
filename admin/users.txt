@@ -1,2 +1,1 @@
-{"login":"test2","pasw":"827ccb0eea8a706c4c34a16891f84e7b","email":"sdv@ascs.com","role":"user","name":"test"}
-{"login":"test","pasw":"827ccb0eea8a706c4c34a16891f84e7b","email":"sdv@ascs.com","role":"user","name":"Test"}
+{"login":"test","pasw":"e10adc3949ba59abbe56e057f20f883e","email":"sdv@ascs.com","role":"user","name":"Test"}

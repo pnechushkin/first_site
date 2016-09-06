@@ -1,4 +1,5 @@
 <?php
+include_once('head.php');
 
 function vaildpasw($pasw1, $pasw2)
 {
@@ -11,8 +12,7 @@ function vaildpasw($pasw1, $pasw2)
 
 function uniqueness_login($login)
 {
-
-	$file = __DIR__ . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'users.txt';
+	$file = USERS_FILE;
 	if (!is_file($file)) {
 		return true;
 	} else {
@@ -43,7 +43,7 @@ function edd_user($login, $pasw1, $email, $name)
 
 		);
 		$userinfval = json_encode($userinf) . PHP_EOL;
-		$file = __DIR__ . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'users.txt';
+		$file = USERS_FILE;
 		$fp = fopen($file, "a");
 		fwrite($fp, $userinfval);
 		fclose($fp);
@@ -73,9 +73,7 @@ function vaild_data()
 }
 
 ?>
-<?php
-include_once('head.php');
-?>
+
 <title>Регистрация пользователя</title>
 
 <div>
@@ -120,7 +118,7 @@ include_once('head.php');
 <?php if (!empty($_POST)):
 	if (edd_user($_POST['login'], $_POST['pasw1'], $_POST['email'], $_POST['name'])):?>
 		<div class="alert alert-success">
-			Регистрация прошла успешно! Перейти на страницу  <a href="/authorization.php">авторизации</a>
+			Регистрация прошла успешно! Перейти на страницу <a href="/authorization.php">авторизации</a>
 		</div>
 		<?php ;
 	else: ?>
