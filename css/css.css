@@ -1,0 +1,25 @@
+
+#footer
+{
+text-align: center;
+    background: #060406;
+    color: ivory;
+}
+#CONNECT
+{padding: 20px 20px 20px 20px;
+
+}
+
+a {
+    text-decoration: none;
+}
+#menu {
+    background-color: red;
+    text-align: center;
+}
+
+#menu:hover {
+    background-color: yellow;
+    text-align: center;
+}
+
