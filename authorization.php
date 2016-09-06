@@ -1,5 +1,6 @@
 <?php
 include_once('head.php');
+
 ?>
 	<title>Авторизация</title>
 	<div align="center"><p>

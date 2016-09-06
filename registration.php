@@ -1,5 +1,5 @@
 <?php
-$mes = null;
+
 function vaildpasw($pasw1, $pasw2)
 {
 	if ($pasw1 === $pasw2) {
@@ -11,15 +11,17 @@ function vaildpasw($pasw1, $pasw2)
 
 function uniqueness_login($login)
 {
+
 	$file = __DIR__ . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'users.txt';
 	if (!is_file($file)) {
 		return true;
 	} else {
 		$fo = fopen($file, 'r');
-		while (false !== ($row = fgets($fo))) {
+		while (false !== ($row = fgets($fo, 4096))) {
 			$login = trim($login);
 			$rez = json_decode($row, true);
-			if ($rez['login'] === $login) {
+			$file_login = $rez['login'];
+			if ($file_login === $login) {
 				fclose($fo);
 				return false;
 			}
@@ -31,78 +33,116 @@ function uniqueness_login($login)
 
 function edd_user($login, $pasw1, $email, $name)
 {
-	$userinf = array(
-		'login' => $login,
-		'pasw' => md5($pasw1),
-		'email' => $email,
-		'role' => 'user',
-		'role' => $name,
+	if (!empty($_POST) && vaild_data() == 0) {
+		$userinf = array(
+			'login' => $login,
+			'pasw' => md5($pasw1),
+			'email' => $email,
+			'role' => 'user',
+			'name' => $name,
 
-	);
-	$userinfval = json_encode($userinf) . PHP_EOL;
-	$file = __DIR__ . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'users.txt';
-	$fp = fopen($file, "a");
-	fwrite($fp, $userinfval);
-	fclose($fp);
+		);
+		$userinfval = json_encode($userinf) . PHP_EOL;
+		$file = __DIR__ . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'users.txt';
+		$fp = fopen($file, "a");
+		fwrite($fp, $userinfval);
+		fclose($fp);
+		return true;
+	} else {
+		return false;
+	}
 }
 
-
-if (!empty($_POST)) {
-	$er = 0;
+function vaild_data()
+{
 	if (empty($_POST['login']) ||
 		empty($_POST['pasw1']) ||
 		empty($_POST['pasw2']) ||
 		empty($_POST['name']) ||
 		empty($_POST['email'])
 	) {
-		$mes .= 'Не все поля заполнены<br/>';
-		$er += 1;
+		return 1;
 	}
 	if (!uniqueness_login($_POST['login'])) {
-		$mes .= 'Пользователь под логином ' . $_POST['login'] . 'уже есть<br/>';
-		$er += 1;
+		return 2;
 	}
 	if (!vaildpasw($_POST['pasw1'], $_POST['pasw2'])) {
-		$mes .= 'Пароли не совпадают<br/>';
-		$er += 1;
+		return 3;
 	}
-	if (!empty($_POST['login']) &&
-		!empty($_POST['pasw1']) &&
-		!empty($_POST['pasw2']) &&
-		!empty($_POST['name']) &&
-		!empty($_POST['email']) && $er == 0
-	) {
-		edd_user($_POST['login'], $_POST['pasw1'], $_POST['email'], $_POST['name']);
-		$mes .= 'Регистрация прошла успешно<br/>';
-	}
+	return 0;
 }
+
 ?>
 <?php
 include_once('head.php');
 ?>
-<title>Задачи по функциям и формам</title>
+<title>Регистрация пользователя</title>
 
 <div>
 	<h2>Форма регистрации</h2>
 </div>
 <div>
-	<form method="post">
-		<label>Имя</label><br/>
-		<input name="name" type="text"><br/>
-		<label>Login</label><br/>
-		<input name="login" type="text"><br/>
-		<label>Пароль</label><br/>
-		<input name="pasw1" type="password"><br/>
-		<label>Пароль еще раз</label><br/>
-		<input name="pasw2" type="password"><br/>
-		<label>Ваш email</label><br/>
-		<input name="email" type="email"><br/>
-		<input type="submit" value="Go">
+	<form method="post" class="form-horizontal">
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Имя</label>
+			<div class="col-sm-10"><input class="form-control" name="name" type="text"><span class="help-inline">Укажите Ваше имя</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Login</label>
+			<div class="col-sm-10"><input class="form-control" name="login" type="text"><span class="help-inline">Придумайте логин</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword1" class="col-sm-2 control-label">Пароль</label>
+			<div class="col-sm-10"><input class="form-control" name="pasw1" type="password" id="inputPassword1"><span
+					class="help-inline">Придумайте пароль</span></div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword2" class="col-sm-2 control-label">Пароль еще раз</label>
+			<div class="col-sm-10"><input class="form-control" name="pasw2" type="password" id="inputPassword2"><span
+					class="help-inline">Повторите пароль</span></div>
+		</div>
+		<div class="form-group">
+			<label for="inputEmail" class="col-sm-2 control-label">Ваш email</label>
+			<div class="col-sm-10"><input class="form-control" name="email" type="email" id="inputEmail"><span
+					class="help-inline">Укажите Email</span></div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="col-sm-10">
+					<button type="submit" class="btn">Зарегистрироваться</button>
+				</div>
+			</div>
+		</div>
 	</form>
 </div>
-<div>
-	<?= $mes ?>
-</div>
+<?php if (!empty($_POST)):
+	if (edd_user($_POST['login'], $_POST['pasw1'], $_POST['email'], $_POST['name'])):?>
+		<div class="alert alert-success">
+			Регистрация прошла успешно! Перейти на страницу  <a href="/authorization.php">авторизации</a>
+		</div>
+		<?php ;
+	else: ?>
+		<div class="alert alert-danger">
+			Ошибка регистрации!<br/>
+			<?php if (vaild_data() == 1): ?>
+				Не все поля заполнены!<br/>
+			<?php endif;
+			?>
+			<?php if (vaild_data() == 2): ?>
+				Такой логин уже есть!<br/>
+			<?php endif;
+			?>
+			<?php if (vaild_data() == 3): ?>
+				Пароли не совпадают!<br/>
+			<?php endif;
+			?>
+		</div>
+		<?php
+	endif;
+endif;
+?>
 <?php
 include_once('footer.php')
 ?>

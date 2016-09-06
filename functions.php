@@ -19,14 +19,18 @@ function find_user($user)
 
 function user_valid_autorisation($user, $pasw)
 {
+	$er = 0;
 	if (empty($user) || empty($pasw)) {
+		$er += 1;
 		return $eror = 1;
 	}
 	$userdata = find_user($user);
 	if (count($userdata) == 0) {
+		$er += 1;
 		return $eror = 2;
 	} else {
 		if (md5($_POST['pasw1']) != $userdata['pasw']) {
+			$er += 1;
 			return $eror = 3;
 		}
 	}

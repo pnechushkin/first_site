@@ -1,2 +1,2 @@
-{"login":"pnechushkin","pasw":"21232f297a57a5a743894a0e4a801fc3","email":"admin@mysite.com.ua","role":"admin"}
-{"login":"test","pasw":"827ccb0eea8a706c4c34a16891f84e7b","email":"test@gmail.com","role":"user"}
+{"login":"test2","pasw":"827ccb0eea8a706c4c34a16891f84e7b","email":"sdv@ascs.com","role":"user","name":"test"}
+{"login":"test","pasw":"827ccb0eea8a706c4c34a16891f84e7b","email":"sdv@ascs.com","role":"user","name":"Test"}
