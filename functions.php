@@ -1,5 +1,6 @@
 <?php
-
+define(ADMIN_DIR, __DIR__ . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR );
+define(USERS_DIR, __DIR__ . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR );
 define(USERS_FILE, __DIR__ . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'users.txt');
 function find_user($user)
 {
