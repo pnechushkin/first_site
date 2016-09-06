@@ -1,1 +1,0 @@
-a:3:{s:5:"login";s:4:"test";s:4:"pasw";s:32:"827ccb0eea8a706c4c34a16891f84e7b";s:5:"email";s:21:"pnechushkin@gmail.com";}
