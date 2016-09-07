@@ -15,18 +15,19 @@ include_once('head.php')
 					<textarea class="form-control" rows="3"></textarea>
 				</div>
 			</div>
-
 			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Отправить</button>
+				<div class="col-sm-offset-6 col-sm-6">
+					<button type="submit" class="btn btn-primary">Отправить</button>
 				</div>
 			</div>
 		</form>
 	</div>
-	<?php ; else: ?>
+	<?php ;
+else: ?>
 	<div class="alert alert-danger">
-		Доступно только для зарегестрированых пользователей! <br/>Пожалуйста <a href="/authorization.php">авторизируйтесь</a> или <a href="registration.php"> зарегестрируйтесь</a>
-		</div>
+		Доступно только для зарегестрированых пользователей! <br/>Пожалуйста <a href="/authorization.php">авторизируйтесь</a>
+		или <a href="registration.php"> зарегестрируйтесь</a>
+	</div>
 	<?php
 endif;
 include_once('footer.php')

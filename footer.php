@@ -1,20 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Павел
- * Date: 05.09.2016
- * Time: 14:23
- */
+
 ?>
 
+
 </div>
-<div class="col-md-3">
+
+<div id="footer" class="navbar-fixed-bottom">
+	<div class="container">
+		&copy; <?php echo date('Y') ?> My first site
+	</div>
 </div>
-</div>
-<div id="footer">
-	<footer>
-		My first site
-	</footer>
-</div>
+
 </body>
 </html>

@@ -18,20 +18,19 @@ if (isset($_GET['exit'])) {
 	<link rel="stylesheet" href="css/css.css" type="text/css">
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-	<ul class="nav nav-pills nav-justified">
-		<li><a href="/  "><H3>Главная</H3></a></li>
-		<?php if (!$_SESSION): ?>
-			<li><a href="/authorization.php"><H3>Авторизация</H3></a></li>
-			<li><a href="/registration.php"><H3>Регистрация</H3></a></li>
-			<?php ;
-		else : ?>
-			<li><a href="/feedback.php"><H3>Обратная связь</H3></a></li>
-			<li><a href="/?exit"><H3>Выход</H3></a></li>
-		<?php endif; ?>
-	</ul>
-</nav>
-<div id="CONNECT" class="row">
-	<div class="col-md-1">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<ul class="nav nav-pills nav-justified">
+			<li><a href="/"><H3>Главная</H3></a></li>
+			<?php if (!$_SESSION): ?>
+				<li><a href="/authorization.php"><H3>Авторизация</H3></a></li>
+				<li><a href="/registration.php"><H3>Регистрация</H3></a></li>
+				<?php ;
+			else : ?>
+				<li><a href="/feedback.php"><H3>Обратная связь</H3></a></li>
+				<li><a href="/?exit"><H3>Выход</H3></a></li>
+			<?php endif; ?>
+		</ul>
 	</div>
-	<div class="col-md-7">
+</nav>
+<div class="container">

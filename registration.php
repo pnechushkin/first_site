@@ -83,33 +83,33 @@ function vaild_data()
 	<form method="post" class="form-horizontal">
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Имя</label>
-			<div class="col-sm-10"><input class="form-control" name="name" type="text"><span class="help-inline">Укажите Ваше имя</span>
+			<div class="col-sm-10"><input class="form-control" name="name" type="text" placeholder="Укажите Ваше имя">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Login</label>
-			<div class="col-sm-10"><input class="form-control" name="login" type="text"><span class="help-inline">Придумайте логин</span>
+			<div class="col-sm-10"><input class="form-control" name="login" type="text" placeholder="Придумайте логин">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="inputPassword1" class="col-sm-2 control-label">Пароль</label>
-			<div class="col-sm-10"><input class="form-control" name="pasw1" type="password" id="inputPassword1"><span
-					class="help-inline">Придумайте пароль</span></div>
+			<div class="col-sm-10"><input class="form-control" name="pasw1" type="password" id="inputPassword1"
+			                              placeholder="Придумайте пароль"></div>
 		</div>
 		<div class="form-group">
 			<label for="inputPassword2" class="col-sm-2 control-label">Пароль еще раз</label>
-			<div class="col-sm-10"><input class="form-control" name="pasw2" type="password" id="inputPassword2"><span
-					class="help-inline">Повторите пароль</span></div>
+			<div class="col-sm-10"><input class="form-control" name="pasw2" type="password"
+			                              placeholder="Повторите пароль" id="inputPassword2"></div>
 		</div>
 		<div class="form-group">
 			<label for="inputEmail" class="col-sm-2 control-label">Ваш email</label>
-			<div class="col-sm-10"><input class="form-control" name="email" type="email" id="inputEmail"><span
-					class="help-inline">Укажите Email</span></div>
+			<div class="col-sm-10"><input class="form-control" name="email" type="email" id="inputEmail"
+			                              placeholder="Укажите Email"></div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
+			<div class="col-sm-offset-6 col-sm-6">
 				<div class="col-sm-10">
-					<button type="submit" class="btn">Зарегистрироваться</button>
+					<button type="submit" class="btn btn-primary">Зарегистрироваться</button>
 				</div>
 			</div>
 		</div>
@@ -124,15 +124,15 @@ function vaild_data()
 	else: ?>
 		<div class="alert alert-danger">
 			Ошибка регистрации!<br/>
-			<?php if (vaild_data() == 1): ?>
+			<?php if (($valid = vaild_data()) == 1): ?>
 				Не все поля заполнены!<br/>
 			<?php endif;
 			?>
-			<?php if (vaild_data() == 2): ?>
+			<?php if ($valid == 2): ?>
 				Такой логин уже есть!<br/>
 			<?php endif;
 			?>
-			<?php if (vaild_data() == 3): ?>
+			<?php if ($valid == 3): ?>
 				Пароли не совпадают!<br/>
 			<?php endif;
 			?>
