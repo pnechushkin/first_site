@@ -1,5 +1,5 @@
-{"login":"test","text":"1test","role":"user","id_mes":1}
-{"login":"test","text":"2test","role":"user","id_mes":2}
-{"login":"admin","text":"sdfsdv","role":"admin","id_mes":"1"}
-{"login":"admin","text":"answ2","role":"admin","id_mes":"2"}
-{"login":"test","text":"sdkcj","role":"user","id_mes":3}
+{"login":"test","text":"testmes1","role":"user","id_mes":1}
+{"login":"test","text":"testmes2","role":"user","id_mes":2}
+{"login":"admin","text":"testansw1","role":"admin","id_mes":"1"}
+{"login":"admin","text":"testansw2","role":"admin","id_mes":"2"}
+{"login":"test","text":"testmes2","role":"user","id_mes":3}
