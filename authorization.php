@@ -27,7 +27,10 @@ include_once('head.php');
 	</div>
 <?php if (!empty($_POST)):
 	if (find_user($_POST['login']) && ($valid = vaild_avtor()) == 0):
-		header('Location: http://' . $_SERVER['HTTP_HOST'] . DIRECTORY_SEPARATOR . 'feedback.php');
+		if (find_user($_POST['login'],'role')=='admin')  : header('Location: /admin/message.php');
+		else :
+		header('Location: /feedback.php') ;
+		endif;
 
 	else: ?>
 		<div class="alert alert-danger">

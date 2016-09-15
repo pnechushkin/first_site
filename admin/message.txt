@@ -1,0 +1,5 @@
+{"login":"test","text":"1test","role":"user","id_mes":1}
+{"login":"test","text":"2test","role":"user","id_mes":2}
+{"login":"admin","text":"sdfsdv","role":"admin","id_mes":"1"}
+{"login":"admin","text":"answ2","role":"admin","id_mes":"2"}
+{"login":"test","text":"sdkcj","role":"user","id_mes":3}
