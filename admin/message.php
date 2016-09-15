@@ -19,6 +19,7 @@ if ($_SESSION['role'] == 'admin') :
 			<div class="form-group">
 				<label>Вопрос от <?php echo find_user($mes[$i]['login'], 'name'); ?></label>
 				<input type="hidden" class="form-control" name="id_mes[]" value="<?php echo $mes[$i]['id_mes']; ?>">
+				<div><?php echo show_users_mes ($mes[$i]['id_mes']); ?></div>
 			</div>
 			<div class="form-group">
 				<label>Ваш ответ</label>

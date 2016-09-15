@@ -33,6 +33,16 @@ function find_mes($id)
 	fclose($fo);
 	return $answ;
 }
+function show_users_mes ($id) {
+	$fo = fopen(MES_FILE, 'r');
+	while (false !== ($row = fgets($fo))) {
+		$rez = json_decode($row, true);
+		if ($rez['id_mes'] == $id && $rez['role'] != 'admin') {
+			return $rez['text'];
+		}
+	}
+	fclose($fo);
+}
 
 function findfreemes()
 {
